@@ -75,7 +75,14 @@ namespace WebApi2_1ExceptionHandling.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, id);
             }
         }
-        
+
+        [Route("unhandled")]
+        [HttpGet]
+        public int UnhandledException()
+        {
+            throw new Exception("Unhandled Exception from value controller");
+        }
+
         // POST api/values
         public void Post([FromBody]string value)
         {
