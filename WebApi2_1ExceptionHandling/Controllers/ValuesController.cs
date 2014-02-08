@@ -59,6 +59,19 @@ namespace WebApi2_1ExceptionHandling.Controllers
             return id;
         }
 
+        [Route("unhandledValidation/{id}")]
+        [HttpGet]
+        public int GetWithGlobalValidation(int id)
+        {
+            if (id > 3)
+            {
+                throw new ValidationException(string.Format("Your id is too big, your value: {0}", id));
+            }
+
+            return id;
+        }
+
+
         [Route("HttpError/{id}")]
         [HttpGet]
         public HttpResponseMessage GetProduct(int id)

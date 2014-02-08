@@ -32,7 +32,7 @@ namespace WebApi2_1ExceptionHandling
 
             config.Filters.Add(new ValidationExceptionFilterAttribute());
             config.Services.Add(typeof(IExceptionLogger),  new SlabLogExceptionLogger());
-
+            config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
 
         }
     }
