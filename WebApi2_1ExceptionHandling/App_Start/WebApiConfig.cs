@@ -17,18 +17,8 @@ namespace WebApi2_1ExceptionHandling
 
             listener.LogToConsole();
             listener.LogToElasticsearchSink("Server=localhost;Index=log;Port=9200", "slab", "WebApiEvent");
- 
-            // Web API configuration and services
 
-            // Web API routes
             config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-
-            );
 
             config.Filters.Add(new ValidationExceptionFilterAttribute());
             config.Services.Add(typeof(IExceptionLogger),  new SlabLogExceptionLogger());
